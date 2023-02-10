@@ -1,18 +1,13 @@
 import sys
-
+from collections import deque
 n, k = map(int, sys.stdin.readline().split())
-cir = [i for i in range(0, n+1)]
+cir = deque([i for i in range(1, n+1)])
 answer = []
-index = 0
-for _ in range(n):
-    for i in range(k): # k번째 찾기
-        while True: # 이미 제거된 사람이면 건너뛰기
-            index += 1
-            index %= (n + 1)
-            if cir[index] != 0:
-                break
-    answer.append(cir[index])
-    cir[index] = 0
+
+while cir:
+    for i in range(k - 1):
+        cir.append(cir.popleft())
+    answer.append(cir.popleft())
 
 print("<", end='')
 for i in range(len(answer) - 1):
