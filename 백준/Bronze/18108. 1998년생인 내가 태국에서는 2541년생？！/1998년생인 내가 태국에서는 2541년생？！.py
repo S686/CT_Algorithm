@@ -1,1 +1,1 @@
-print(f'{int(input())-543}')
+print(int(input())-543)
