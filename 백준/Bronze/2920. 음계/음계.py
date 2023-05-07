@@ -1,17 +1,18 @@
-scale = list(map(int,input().split(' ')))
-
+import sys
+input = sys.stdin.readline
+num = list(map(int, input().split()))
 ascending = True
 descending = True
-a = 1
 
-for i in scale :
-    if a == len(scale) : break
-    if i < scale[a] :
+for i in range(1, 8):
+    if num[i] > num[i-1]:
         descending = False
-    elif i > scale[a] :
+    elif num[i] < num[i-1]:
         ascending = False
-    a += 1
 
-if ascending : print("ascending")
-elif descending : print("descending")
-else : print("mixed")
+if ascending:
+    print("ascending")
+elif descending:
+    print("descending")
+else:
+    print("mixed")
